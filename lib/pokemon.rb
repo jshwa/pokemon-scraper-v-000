@@ -17,7 +17,7 @@ class Pokemon
 
   def self.find(id, db)
     pokemon = db.execute("SELECT * FROM pokemon WHERE pokemon.id = ?", id).flatten
-    # binding.pry
+    binding.pry
     db.execute("UPDATE pokemon SET hp = 60 WHERE id = ?", id) if pokemon[3] == nil && pokemon.length == 4
     Pokemon.new(id:id, name: "#{pokemon[1]}", type: "#{pokemon[2]}", db: db, hp: pokemon[3])
   end
