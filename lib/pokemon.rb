@@ -19,7 +19,7 @@ class Pokemon
     pokemon = db.execute("SELECT * FROM pokemon WHERE pokemon.id = ?", id)
     # binding.pry
     db.execute("UPDATE pokemon SET hp = 60 WHERE id = ?", id) if pokemon[0][3] == nil
-    Pokemon.new(id:id, name: "#{pokemon[0][1]}", type: "#{pokemon[0][2]}", db: db, hp: "#{pokemon[0][3]}")
+    Pokemon.new(id:id, name: "#{pokemon[0][1]}", type: "#{pokemon[0][2]}", db: db, hp: pokemon[0][3]})
   end
 
   def alter_hp(hp, db)
