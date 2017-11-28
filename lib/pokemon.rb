@@ -15,8 +15,6 @@ class Pokemon
 
   def self.find(id, db)
     pokemon = db.execute("SELECT * FROM pokemon WHERE pokemon.id = ?", id)
-    pokemon.flatten
-    raise pokemon.inspect
     Pokemon.new(id:id, name: "#{pokemon[0][1]}", type: "#{pokemon[0][2]}", db: db)
   end
 end
