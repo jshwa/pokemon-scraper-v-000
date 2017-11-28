@@ -1,3 +1,5 @@
+require 'pry'
+
 class Pokemon
   attr_accessor :id, :name, :type, :db
 
@@ -15,6 +17,7 @@ class Pokemon
   def self.find(id, db)
     pokemon = db.execute("SELECT * FROM pokemon WHERE pokemon.id = ?", id)
     new_pokemon = Pokemon.new(id:id, name: pokemon[1], type: pokemon[2], db: db)
+    raise new_pokemon.inspect
     new_pokemon
   end
 end
